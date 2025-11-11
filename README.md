@@ -1,5 +1,5 @@
 
-## 🧠 Base Architecture: Faster R-CNN
+## Base Architecture: Faster R-CNN
 
 **Faster R-CNN (Region-based Convolutional Neural Network)** is a **two-stage detector**:
 
@@ -8,11 +8,11 @@
 
 ---
 
-### 🎯 The Collaborative Attempt to Improve Accuracy and Experimentations
-#### **1️⃣ Faster R-CNN (ResNet50 + FPN + Soft-NMS)**
+### The Collaborative Attempt to Improve Accuracy and Experimentations
+#### ** 1) Faster R-CNN (ResNet50 + FPN + Soft-NMS)**
 - Used **ResNet50** as the backbone instead of VGG16 for deeper feature extraction.  
 - Integrated **Feature Pyramid Network (FPN)** for multi-scale detection.  
 - Added **Soft-NMS** to preserve overlapping detections.
-#### **2️⃣ YOLO + SSD Hybrid**
+#### ** 2) YOLO + SSD Hybrid**
 - Combined **YOLO** (fast detection) with **SSD** (refinement on low-confidence regions).  
 - Theoretically aimed for real-time detection with higher accuracy. 
