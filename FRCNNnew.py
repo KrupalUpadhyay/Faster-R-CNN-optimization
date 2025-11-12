@@ -27,10 +27,17 @@ print("✅ Dataset downloaded to:", path)
 # ===============================================================
 # 2️⃣  Define Dataset Paths
 # ===============================================================
+<<<<<<< HEAD
 train_img_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/images/train/")
 val_img_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/images/val/")
 train_label_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/labels/train/")
 val_label_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/labels/val/")
+=======
+train_img_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/images/train/")
+val_img_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/images/val/")
+train_label_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/labels/train/")
+val_label_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/labels/val/")
+>>>>>>> 00eac40ca9c366ef0795bee6fab71f1865376e24
 
 # ===============================================================
 # 3️⃣  Custom Dataset Class
@@ -117,9 +124,15 @@ print("✅ Using device:", device)
 # ===============================================================
 # 6️⃣  Training
 # ===============================================================
+<<<<<<< HEAD
 optimizer = torch.optim.SGD(model.parameters(), lr=0.009631, momentum=0.727, weight_decay=0.0000011)
 lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.351)
 num_epochs = 200
+=======
+optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9, weight_decay=0.0005)
+lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=3, gamma=0.1)
+num_epochs = 20
+>>>>>>> 00eac40ca9c366ef0795bee6fab71f1865376e24
 
 for epoch in range(num_epochs):
     model.train()
