@@ -1,0 +1,39 @@
+Wed Nov 12 09:00:57 IST 2025
+cn24
+/scratch/data/m24cps008/CV_Project
+Requirement already satisfied: pycocotools in /iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages (2.0.10)
+Requirement already satisfied: numpy in /iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages (from pycocotools) (2.2.6)
+
+[notice] A new release of pip is available: 23.0.1 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+[I 2025-11-12 09:01:08,090] A new study created in memory with name: no-name-e1c3549e-681f-4ed8-8647-f0d30e30c94b
+/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/torchvision/models/_utils.py:135: UserWarning: Using 'backbone_name' as positional parameter(s) is deprecated since 0.13 and may be removed in the future. Please use keyword parameter(s) instead.
+  warnings.warn(
+/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+[W 2025-11-12 09:01:08,745] Trial 0 failed with parameters: {'lr': 0.001997713687044118, 'momentum': 0.5563710816758132, 'weight_decay': 5.939058824900695e-06, 'step_size': 3, 'gamma': 0.528318286227558, 'iou_thr': 0.8062176196407667, 'sigma': 0.9962721783492858, 'thresh': 0.000638348894910057} because of the following error: NameError("name 'device' is not defined").
+Traceback (most recent call last):
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 201, in _run_trial
+    value_or_values = func(trial)
+  File "/scratch/data/m24cps008/CV_Project/optuna_FastRCNN.py", line 62, in objective
+    model.to(device)
+NameError: name 'device' is not defined
+[W 2025-11-12 09:01:08,745] Trial 0 failed with value None.
+Traceback (most recent call last):
+  File "/scratch/data/m24cps008/CV_Project/optuna_FastRCNN.py", line 118, in <module>
+    study.optimize(objective, n_trials=30, timeout=7200)  # 30 trials, 2 hours
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/study.py", line 489, in optimize
+    _optimize(
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 64, in _optimize
+    _optimize_sequential(
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 161, in _optimize_sequential
+    frozen_trial = _run_trial(study, func, catch)
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 253, in _run_trial
+    raise func_err
+  File "/iitjhome/m24cps008/nafnet_gpu_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 201, in _run_trial
+    value_or_values = func(trial)
+  File "/scratch/data/m24cps008/CV_Project/optuna_FastRCNN.py", line 62, in objective
+    model.to(device)
+NameError: name 'device' is not defined
