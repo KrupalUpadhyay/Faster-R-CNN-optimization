@@ -1,0 +1,21 @@
+Fri Nov 14 10:42:40 IST 2025
+dgx1.ihub-drishti.ai
+/scratch/gb_cod2/CV_Project
+Requirement already satisfied: kagglehub in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (0.3.13)
+Requirement already satisfied: tqdm in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from kagglehub) (4.67.1)
+Requirement already satisfied: requests in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from kagglehub) (2.32.4)
+Requirement already satisfied: packaging in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from kagglehub) (25.0)
+Requirement already satisfied: pyyaml in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from kagglehub) (6.0.3)
+Requirement already satisfied: certifi>=2017.4.17 in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from requests->kagglehub) (2025.7.14)
+Requirement already satisfied: charset_normalizer<4,>=2 in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from requests->kagglehub) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from requests->kagglehub) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /ihub/homedirs/gb_cod2/nafnet_gpu_env/lib/python3.10/site-packages (from requests->kagglehub) (2.5.0)
+
+[notice] A new release of pip is available: 23.0.1 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+Traceback (most recent call last):
+  File "/scratch/gb_cod2/CV_Project/VGG_unshared.py", line 87, in <module>
+    train_dataset = CustomDataset(train_img_dir, train_label_dir, classes)
+  File "/scratch/gb_cod2/CV_Project/VGG_unshared.py", line 41, in __init__
+    self.img_files = [f for f in os.listdir(img_folder) if f.endswith(('.jpg','.jpeg','.png'))]
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/data/gehlot5/CV_Project_13-11-25/4/images/train/'
