@@ -1,6 +1,4 @@
-# ===============================================================
-#   CV Project - Faster R-CNN on Pascal VOC (MobaXterm Version)
-# ===============================================================
+# CV Project - Faster R-CNN on Pascal VOC (MobaXterm Version)
 
 import os
 import cv2
@@ -14,19 +12,14 @@ from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.transforms import functional as F
 from torchvision.ops import box_iou
 
-# ===============================================================
-# 1️⃣  Setup and Dependencies
-# ===============================================================
-# Make sure to run this once before running script (if needed):
-# pip install torch torchvision torchaudio matplotlib opencv-python tqdm kagglehub
+# Setup and Dependencies
 
 import kagglehub
 path = kagglehub.dataset_download("sergiomoy/pascal-voc-2007-for-yolo")
-print("✅ Dataset downloaded to:", path)
+print("Dataset downloaded to:", path)
 
-# ===============================================================
-# 2️⃣  Define Dataset Paths
-# ===============================================================
+# Define Dataset Paths
+
 <<<<<<< HEAD
 train_img_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/images/train/")
 val_img_dir = os.path.join(path, "/scratch/gb_cod2/CV_Project/4/images/val/")
@@ -39,9 +32,8 @@ train_label_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/labels/train
 val_label_dir = os.path.join(path, "/scratch/gb_cod4/CV_Project/4/labels/val/")
 >>>>>>> 00eac40ca9c366ef0795bee6fab71f1865376e24
 
-# ===============================================================
-# 3️⃣  Custom Dataset Class
-# ===============================================================
+# Custom Dataset Class
+
 class CustomDataset(Dataset):
     def __init__(self, img_folder, label_folder, classes=None, transforms=None):
         self.img_folder = img_folder
@@ -73,7 +65,7 @@ class CustomDataset(Dataset):
                         boxes.append([x_min, y_min, x_max, y_max])
                         labels.append(cls)
                     except ValueError:
-                        print(f"⚠️ Skipping invalid line in {label_path}")
+                        print(f"Skipping invalid line in {label_path}")
 
         if len(boxes) == 0:
             boxes = torch.zeros((0, 4), dtype=torch.float32)
@@ -91,9 +83,8 @@ class CustomDataset(Dataset):
     def __len__(self):
         return len(self.img_files)
 
-# ===============================================================
-# 4️⃣  Load Dataset
-# ===============================================================
+# Load Dataset
+
 classes = ["__background__", "aeroplane", "bicycle", "bird", "boat", "bottle",
            "bus", "car", "cat", "chair", "cow", "diningtable", "dog",
            "horse", "motorbike", "person", "pottedplant", "sheep",
@@ -105,9 +96,8 @@ val_dataset = CustomDataset(val_img_dir, val_label_dir, classes)
 train_loader = DataLoader(train_dataset, batch_size=2, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 val_loader = DataLoader(val_dataset, batch_size=2, shuffle=False, collate_fn=lambda x: tuple(zip(*x)))
 
-# ===============================================================
-# 5️⃣  Model Setup
-# ===============================================================
+# Model Setup
+
 def get_model(num_classes):
     model = torchvision.models.detection.fasterrcnn_resnet50_fpn(weights="COCO_V1")
     in_features = model.roi_heads.box_predictor.cls_score.in_features
@@ -119,11 +109,10 @@ model = get_model(num_classes)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
-print("✅ Using device:", device)
+print("Using device:", device)
 
-# ===============================================================
-# 6️⃣  Training
-# ===============================================================
+# Training
+
 <<<<<<< HEAD
 optimizer = torch.optim.SGD(model.parameters(), lr=0.009631, momentum=0.727, weight_decay=0.0000011)
 lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.351)
@@ -155,15 +144,13 @@ for epoch in range(num_epochs):
     print(f"📉 Epoch [{epoch+1}/{num_epochs}] Avg Training Loss: {avg_train_loss:.4f}")
     lr_scheduler.step()
 
-# ===============================================================
-# 7️⃣  Save Model
-# ===============================================================
+# Save Model
+
 torch.save(model.state_dict(), "fasterrcnn2_trained_model.pth")
 print("💾 Model saved as fasterrcnn_trained_model.pth")
 
-# ===============================================================
-# 8️⃣  Accuracy Calculation (No Validation Loss)
-# ===============================================================
+# Accuracy Calculation (No Validation Loss)
+
 model.eval()
 model.load_state_dict(torch.load("fasterrcnn2_trained_model.pth", map_location=device))
 
@@ -205,13 +192,12 @@ mean_iou = np.mean(ious_all) if len(ious_all) else 0
 mean_precision = np.mean(precisions) if len(precisions) else 0
 mAP = mean_precision
 
-print("\n✅ Final Accuracy Results:")
-print(f"➡️ Mean IoU: {mean_iou:.4f}")
-print(f"➡️ Mean Precision (mAP@0.5): {mAP:.4f}")
+print("\n Final Accuracy Results:")
+print(f" Mean IoU: {mean_iou:.4f}")
+print(f" Mean Precision (mAP@0.5): {mAP:.4f}")
 
-# ===============================================================
-# 9️⃣  Save Predicted Images
-# ===============================================================
+# Save Predicted Images
+
 os.makedirs("predictions", exist_ok=True)
 import random
 
@@ -236,5 +222,5 @@ for idx in indices:
 
     save_path = f"predictions/prediction_{idx}.png"
     cv2.imwrite(save_path, img_np)
-    print(f"✅ Saved: {save_path}")
+    print(f" Saved: {save_path}")
 
